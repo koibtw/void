@@ -5,6 +5,7 @@ set -euo pipefail
 # packages ======================================================================================
 
 PACKAGES=(
+  # dependencies
   curl # setup
   dbus # desktop
   cargo # blink.cmp
@@ -12,22 +13,32 @@ PACKAGES=(
   gsettings-desktop-schemas # gtk
   xdg-desktop-portal-wlr # mango
 
+  # graphical
+  mangowc
+  helium
+  foot
+
+  # console
+  jujutsu
+  gnupg
+  unzip
+  git
+
+  # terminal
+  wiremix
+  neovim
+
+  # video
+  v4l2loopback
+  obs
+
+  # shell
+  eza
+  fd
+
+  # fonts
+  # TODO: maple mono nf
   noto-fonts-cjk-sans
   noto-fonts-emoji
   noto-fonts-ttf
-
-  v4l2loopback
-  mangowc
-  jujutsu
-  wiremix
-  helium
-  neovim
-  gnupg
-  unzip
-  foot
-  obs
-  git
-  eza
-  zvm
-  fd
 )
