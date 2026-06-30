@@ -8,8 +8,6 @@ PACKAGES=(
   curl # setup
   dbus # desktop
   cargo # blink.cmp
-  pipewire # TODO: custom setup
-  wireplumber # TODO: custom setup
   xwayland-satellite # mango
   gsettings-desktop-schemas # gtk
   xdg-desktop-portal-wlr # mango

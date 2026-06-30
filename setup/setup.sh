@@ -21,6 +21,14 @@ setup_doas() {
   doas xbps-remove -Ry sudo
 }
 
+# pipewire ======================================================================================
+
+setup_pipewire() {
+  doas xbps-install -y pipewire wireplumber
+  doas ln -sfn /usr/share/examples/wireplumber/10-wireplumber.conf /etc/pipewire/pipewire.conf.d/
+  doas ln -sfn /usr/share/examples/pipewire/20-pipewire-pulse.conf /etc/pipewire/pipewire.conf.d/
+}
+
 # packages ======================================================================================
 
 install_packages() {
@@ -70,8 +78,9 @@ install_config() {
 
 main() {
   [[ "$(command -v doas)" ]] || setup_doas
-  install_packages
+  setup_pipewire
 
+  install_packages
   install_scripts
   install_config
 }
