@@ -9,6 +9,7 @@ export PACKAGES=(
   curl                      # setup
   dbus                      # desktop
   cargo                     # blink.cmp
+  git-lfs                   # git
   xwayland-satellite        # mango
   gsettings-desktop-schemas # gtk
   xdg-desktop-portal-wlr    # mango
