@@ -34,10 +34,6 @@ export PACKAGES=(
   v4l2loopback
   obs
 
-  # shell
-  eza
-  fd
-
   # dev
   shfmt
   shellcheck
@@ -47,6 +43,16 @@ export PACKAGES=(
   noto-fonts-cjk-sans
   noto-fonts-emoji
   noto-fonts-ttf
+)
+
+# zsh ===========================================================================================
+
+export ZSH_PACKAGES=(
+  zsh-syntax-highlighting
+  zsh-autosuggestions
+  zsh
+  eza
+  fd
 )
 
 # lsp ===========================================================================================

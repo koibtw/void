@@ -40,6 +40,23 @@ install_scripts() {
   done
 }
 
+# zsh ===========================================================================================
+
+setup_zsh() {
+  local tmp_rc
+
+  install_packages "${ZSH_PACKAGES[@]}"
+  doas chsh "$USER" -s /bin/zsh
+
+  tmp_rc="$(temp 'zsh' 'rc')"
+  for file in options keymap prompt aliases functions completions plugins init; do
+    echo "source '$(p_zsh_src "$file")'" >>"$tmp_rc"
+  done
+
+  move "$tmp_rc" "$HOME/.zshrc"
+  link "$(p_zsh_src profile)" "$HOME/.zprofile"
+}
+
 # config ========================================================================================
 
 install_config() {
@@ -69,6 +86,8 @@ main() {
   install_npm_packages "${NPM_PACKAGES[@]}"
 
   install_scripts
+
+  setup_zsh
   install_config
 }
 

@@ -4,6 +4,11 @@ set -euo pipefail
 
 # paths =========================================================================================
 
+p_zsh_src() {
+  local target="$1"
+  echo "$ROOT/zsh/$target.zsh"
+}
+
 p_config_src() {
   local target="$1"
   echo "$ROOT/config/$target"
@@ -22,8 +27,8 @@ p_bin_dst() {
 # files =========================================================================================
 
 temp() {
-  local dst="$1"
-  local dir="$2"
+  local dir="$1"
+  local dst="$2"
 
   mktemp -p /tmp "setup.$(basename "$dir").$(basename "$dst").XXXXX"
 }
@@ -42,6 +47,14 @@ backup_root() {
 
   [[ ! -e "$dst" ]] && return
   cmp -s "$src" "$dst" || doas mv "$dst" "$dst.bak"
+}
+
+move() {
+  local tmp="$1"
+  local dst="$2"
+
+  backup "$tmp" "$dst"
+  mv "$tmp" "$dst"
 }
 
 link() {
@@ -69,7 +82,7 @@ download_config() {
 
   dst="$(p_config_dst "$target")"
   dir="$(dirname "$dst")"
-  tmp="$(temp "$dst" "$dir")"
+  tmp="$(temp "$dir" "$dst")"
 
   mkdir -p "$dir"
   curl -fsSL "$url" -o "$tmp"
@@ -78,8 +91,7 @@ download_config() {
     curl -fsSL "$add" >>"$tmp"
   done
 
-  backup "$tmp" "$dst"
-  mv "$tmp" "$dst"
+  move "$tmp" "$dst"
 }
 
 # packages ======================================================================================

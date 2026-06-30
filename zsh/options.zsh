@@ -1,0 +1,3 @@
+setopt interactivecomments
+setopt appendhistory
+setopt nopromptsubst
