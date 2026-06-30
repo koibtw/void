@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+EDITOR="${EDITOR:-vi}"
+
+usage() {
+  printf 'usage: %s [file ...]\n' "$(basename -- "$0")" >&2
+  exit 1
+}
+
+run() {
+  local file="$1"
+
+  tmp="$(mktemp -p /tmp "doasvi.$(basename -- "$file").XXXXX")"
+  trap 'rm -f -- "$tmp"' RETURN
+
+  if [[ -e $file ]]; then
+    doas cp --no-preserve=mode,ownership -- "$file" "$tmp"
+  fi
+
+  "$EDITOR" "$tmp" || return "$?"
+
+  if [[ -e $file ]] && cmp -s -- "$tmp" "$file"; then
+    continue
+  fi
+    
+  doas cp --no-preserve=mode,ownership -- "$tmp" "$file"
+}
+
+main() {
+  (( $# )) || usage
+
+  local file status=0
+  for file; do
+    run "$file" || {
+      status="$?"
+      printf 'error: editing %s\n' "$file" >&2
+    }
+  done
+
+  return "$status"
+}
+
+main "$@"
