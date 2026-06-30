@@ -26,7 +26,7 @@ setup_doas() {
 # pipewire ======================================================================================
 
 setup_pipewire() {
-  doas xbps-install -y pipewire wireplumber
+  install_packages pipewire wireplumber
   doas ln -sfn /usr/share/examples/wireplumber/10-wireplumber.conf /etc/pipewire/pipewire.conf.d/
   doas ln -sfn /usr/share/examples/pipewire/20-pipewire-pulse.conf /etc/pipewire/pipewire.conf.d/
 }
@@ -34,7 +34,11 @@ setup_pipewire() {
 # packages ======================================================================================
 
 install_packages() {
-  doas xbps-install -y "${PACKAGES[@]}"
+  doas xbps-install -y "$@"
+}
+
+install_npm_packages() {
+  doas npm i -g "$@"
 }
 
 # scripts =======================================================================================
@@ -82,7 +86,10 @@ main() {
   [[ "$(command -v doas)" ]] || setup_doas
   setup_pipewire
 
-  install_packages
+  install_packages "${PACKAGES[@]}"
+  install_packages "${LSP_PACKAGES[@]}"
+  install_npm_packages "${NPM_PACKAGES[@]}"
+
   install_scripts
   install_config
 }

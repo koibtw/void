@@ -9,6 +9,7 @@ export PACKAGES=(
   curl                      # setup
   dbus                      # desktop
   cargo                     # blink.cmp
+  nodejs                    # npm packages
   git-lfs                   # git
   xwayland-satellite        # mango
   gsettings-desktop-schemas # gtk
@@ -46,4 +47,20 @@ export PACKAGES=(
   noto-fonts-cjk-sans
   noto-fonts-emoji
   noto-fonts-ttf
+)
+
+# lsp ===========================================================================================
+
+export LSP_PACKAGES=(
+  bash-language-server
+  lua-language-server
+  just-lsp
+  tombi
+  yaml-language-server
+)
+
+# npm ===========================================================================================
+
+export NPM_PACKAGES=(
+  @zed-industries/vscode-langservers-extracted
 )
