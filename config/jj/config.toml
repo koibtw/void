@@ -1,0 +1,42 @@
+# user ==========================================================================================
+
+[user]
+name = "june"
+email = "me@koi.rip"
+
+[signing]
+behavior = "force"
+backend = "gpg"
+key = "5A530832DA9120B0CA57DDB67CBDB58ECF1D3478"
+
+# config ========================================================================================
+
+[ui]
+default-command = "status"
+diff-formatter = ":git"
+diff-editor = ":builtin"
+# pager = [ "sh", "-c", "diff-so-fancy | less -RFX" ]
+
+[colors]
+"diff added token" = { underline = false }
+"diff removed token" = { underline = false }
+
+[aliases]
+init = [ "git", "init", "--colocate" ]
+clone = [ "git", "clone", "--colocate", "--fetch-tags=none", "--branch" ]
+set = [ "bookmark", "move", "--to=first_parent(@)" ]
+boo = [ "metaedit", "--author=robin <comfysagedev@gmail.com>" ]
+
+[templates]
+draft_commit_description = '''
+concat(
+  builtin_draft_commit_description,
+  "
+JJ: Co-authored-by: user <user at users.noreply.github.com>
+JJ: Signed-off-by: june <me at koi.rip>
+JJ: Reviewed-by: june <me at koi.rip>
+JJ: Reviewed-on:",
+  "\nJJ: ignore-rest\n",
+  diff.git(),
+)
+'''
