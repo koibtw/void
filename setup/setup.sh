@@ -6,17 +6,19 @@ set -euo pipefail
 
 SETUP="$(dirname "$0")"
 ROOT="$(readlink -f "$(basename "$SETUP")/..")"
+# shellcheck source=setup/helpers.sh
 source "$SETUP/helpers.sh"
+# shellcheck source=setup/packages.sh
 source "$SETUP/packages.sh"
 
 # doas ==========================================================================================
 
 setup_doas() {
   sudo xbps-install -y opendoas
-  echo 'permit persist :wheel' \
-    | sudo tee /etc/doas.conf >/dev/null
-  echo 'ignorepkg=sudo' \
-    | sudo tee -a '/etc/xbps.d/10-ignore.conf' >/dev/null
+  echo 'permit persist :wheel' |
+    sudo tee /etc/doas.conf >/dev/null
+  echo 'ignorepkg=sudo' |
+    sudo tee -a '/etc/xbps.d/10-ignore.conf' >/dev/null
   doas true
   doas xbps-remove -Ry sudo
 }

@@ -62,7 +62,7 @@ download() {
   curl -fsSL "$url" -o "$tmp"
 
   for add in "${@:3}"; do
-    curl -fsSL "$add" >> "$tmp"
+    curl -fsSL "$add" >>"$tmp"
   done
 
   backup "$tmp" "$dst"

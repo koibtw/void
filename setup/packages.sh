@@ -4,14 +4,14 @@ set -euo pipefail
 
 # packages ======================================================================================
 
-PACKAGES=(
+export PACKAGES=(
   # dependencies
-  curl # setup
-  dbus # desktop
-  cargo # blink.cmp
-  xwayland-satellite # mango
+  curl                      # setup
+  dbus                      # desktop
+  cargo                     # blink.cmp
+  xwayland-satellite        # mango
   gsettings-desktop-schemas # gtk
-  xdg-desktop-portal-wlr # mango
+  xdg-desktop-portal-wlr    # mango
 
   # graphical
   mangowc
@@ -35,6 +35,10 @@ PACKAGES=(
   # shell
   eza
   fd
+
+  # dev
+  shfmt
+  shellcheck
 
   # fonts
   # TODO: maple mono nf
