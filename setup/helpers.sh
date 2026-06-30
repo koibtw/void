@@ -4,17 +4,17 @@ set -euo pipefail
 
 # paths =========================================================================================
 
-p_src() {
+p_config_src() {
   local target="$1"
   echo "$ROOT/config/$target"
 }
 
-p_dst() {
+p_config_dst() {
   local target="$1"
   echo "$XDG_CONFIG_HOME/$target"
 }
 
-p_bin() {
+p_bin_dst() {
   local target="$1"
   echo "/usr/local/bin/$target"
 }
@@ -36,25 +36,38 @@ backup() {
   cmp -s "$src" "$dst" || mv "$dst" "$dst.bak"
 }
 
+backup_root() {
+  local src="$1"
+  local dst="$2"
+
+  [[ ! -e "$dst" ]] && return
+  cmp -s "$src" "$dst" || doas mv "$dst" "$dst.bak"
+}
+
 link() {
-  local target="$1"
-  local src dst dir
+  local src="$1"
+  local dst="$2"
 
-  src="$(p_src "$target")"
-  dst="$(p_dst "$target")"
-  dir="$(dirname "$dst")"
-
-  mkdir -p "$dir"
+  mkdir -p "$(dirname "$dst")"
   backup "$src" "$dst"
   ln -sfn "$src" "$dst"
 }
 
-download() {
+link_root() {
+  local src="$1"
+  local dst="$2"
+
+  doas mkdir -p "$(dirname "$dst")"
+  backup_root "$src" "$dst"
+  doas ln -sfn "$src" "$dst"
+}
+
+download_config() {
   local target="$1"
   local url="$2"
   local dst dir tmp
 
-  dst="$(p_dst "$target")"
+  dst="$(p_config_dst "$target")"
   dir="$(dirname "$dst")"
   tmp="$(temp "$dst" "$dir")"
 
@@ -67,4 +80,14 @@ download() {
 
   backup "$tmp" "$dst"
   mv "$tmp" "$dst"
+}
+
+# packages ======================================================================================
+
+install_packages() {
+  doas xbps-install -y "$@"
+}
+
+install_npm_packages() {
+  doas npm i -g "$@"
 }
