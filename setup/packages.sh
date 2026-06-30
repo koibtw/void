@@ -48,6 +48,7 @@ export PACKAGES=(
 # zsh ===========================================================================================
 
 export ZSH_PACKAGES=(
+  zoxide
   zsh-syntax-highlighting
   zsh-autosuggestions
   zsh
