@@ -15,6 +15,7 @@ export PACKAGES=(
   xdg-desktop-portal-wlr    # mango
 
   # graphical
+  wl-clipboard
   mangowc
   helium
   foot
