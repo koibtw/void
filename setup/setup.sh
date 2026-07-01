@@ -23,6 +23,22 @@ setup_doas() {
   doas xbps-remove -Ry sudo
 }
 
+# xbps ==========================================================================================
+
+setup_xbps() {
+  local file='00-vup.conf' arch tmp
+
+  arch="$(xbps-uhelper arch)"
+  tmp="$(temp 'xbps' "$file")"
+
+  for repo in 'browsers' 'language-servers'; do
+    local url="https://github.com/VUP-Linux/vup/releases/download/$repo-$arch-current"
+    echo "repository=$url" >>"$tmp"
+  done
+
+  move_root "$tmp" "/etc/xbps.d/$file"
+}
+
 # pipewire ======================================================================================
 
 setup_pipewire() {
@@ -87,8 +103,8 @@ install_config() {
 
 main() {
   [[ "$(command -v doas)" ]] || setup_doas
+  setup_xbps
   setup_pipewire
-
   setup_rust
 
   install_packages "${PACKAGES[@]}"

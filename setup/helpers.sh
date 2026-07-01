@@ -57,6 +57,14 @@ move() {
   mv "$tmp" "$dst"
 }
 
+move_root() {
+  local tmp="$1"
+  local dst="$2"
+
+  backup_root "$tmp" "$dst"
+  doas mv "$tmp" "$dst"
+}
+
 link() {
   local src="$1"
   local dst="$2"
