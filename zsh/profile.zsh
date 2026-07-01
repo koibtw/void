@@ -20,6 +20,11 @@ export XDG_MUSIC_DIR='/media/music'
 export XDG_PUBLICSHARE_DIR='/tmp/garbage'
 export XDG_TEMPLATES_DIR='/tmp/garbage'
 
+export CARGO_TARGET_DIR="$HOME/.cargo/target"
+if [[ -f "$HOME/.cargo/env" ]]; then
+  source "$HOME/.cargo/env"
+fi
+
 if [[ -z "$WAYLAND_DISLPAY" ]] && [[ "$XDG_VTNR" = 1 ]]; then
   exec dbus-run-session mango
 fi

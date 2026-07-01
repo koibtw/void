@@ -32,6 +32,14 @@ setup_pipewire() {
   done
 }
 
+# rust ==========================================================================================
+
+setup_rust() {
+  install_packages rustup
+  rustup-init --no-modify-path -y \
+    -c rust-analyzer
+}
+
 # scripts =======================================================================================
 
 install_scripts() {
@@ -80,6 +88,8 @@ install_config() {
 main() {
   [[ "$(command -v doas)" ]] || setup_doas
   setup_pipewire
+
+  setup_rust
 
   install_packages "${PACKAGES[@]}"
   install_packages "${LSP_PACKAGES[@]}"

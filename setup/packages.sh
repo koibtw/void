@@ -8,7 +8,6 @@ export PACKAGES=(
   # dependencies
   curl                      # setup
   dbus                      # desktop
-  cargo                     # blink.cmp
   nodejs                    # npm packages
   git-lfs                   # git
   xwayland-satellite        # mango
