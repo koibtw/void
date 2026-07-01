@@ -31,6 +31,7 @@ export PACKAGES=(
   # terminal
   wiremix
   neovim
+  btop
 
   # video
   v4l2loopback
@@ -39,6 +40,7 @@ export PACKAGES=(
   # dev
   shfmt
   shellcheck
+  xtools
 
   # fonts
   # TODO: maple mono nf
