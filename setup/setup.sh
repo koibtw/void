@@ -81,6 +81,13 @@ setup_zsh() {
   link "$(p_zsh_src profile)" "$HOME/.zprofile"
 }
 
+# home ==========================================================================================
+
+setup_home() {
+  # shellcheck disable=SC2174
+  mkdir -pm 700 "$HOME/.secrets"
+}
+
 # config ========================================================================================
 
 install_config() {
@@ -90,6 +97,8 @@ install_config() {
 
   download_config 'foot/evergarden-fall.ini' \
     'https://codeberg.org/evergarden/foot/raw/themes/evergarden-fall-green.ini'
+  download_config 'halloy/themes/evergarden-fall.toml' \
+    'https://codeberg.org/evergarden/halloy/raw/themes/evergarden-fall.toml'
 
   # TODO: adw-gtk3
   download_config 'gtk-3.0/gtk.css' \
@@ -114,6 +123,7 @@ main() {
   install_scripts
 
   setup_zsh
+  setup_home
   install_config
 }
 

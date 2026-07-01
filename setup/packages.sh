@@ -18,6 +18,7 @@ export PACKAGES=(
   wl-clipboard
   mangowc
   helium
+  halloy
   foot
 
   # console
