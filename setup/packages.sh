@@ -24,6 +24,7 @@ export PACKAGES=(
   jujutsu
   gnupg
   unzip
+  just
   git
 
   # terminal
