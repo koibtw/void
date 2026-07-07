@@ -19,6 +19,8 @@ export PACKAGES=(
   mangowc
   helium
   halloy
+  slurp
+  grim
   foot
 
   # console
@@ -27,6 +29,7 @@ export PACKAGES=(
   unzip
   just
   git
+  jq
 
   # terminal
   wiremix
