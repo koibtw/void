@@ -83,6 +83,17 @@ link_root() {
   doas ln -sfn "$src" "$dst"
 }
 
+download() {
+  local target="$1"
+  local url="$2"
+
+  curl -fsSL "$url" -o "$target"
+
+  for add in "${@:3}"; do
+    curl -fsSL "$add" >>"$target"
+  done
+}
+
 download_config() {
   local target="$1"
   local url="$2"
@@ -93,11 +104,7 @@ download_config() {
   tmp="$(temp "$dir" "$dst")"
 
   mkdir -p "$dir"
-  curl -fsSL "$url" -o "$tmp"
-
-  for add in "${@:3}"; do
-    curl -fsSL "$add" >>"$tmp"
-  done
+  download "$tmp" "$url" "${@:3}"
 
   move "$tmp" "$dst"
 }

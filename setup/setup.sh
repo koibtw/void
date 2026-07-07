@@ -64,6 +64,20 @@ install_scripts() {
   done
 }
 
+# themes ========================================================================================
+
+install_themes() {
+  local url='https://github.com/lassekongo83/adw-gtk3/releases/download/v6.5/adw-gtk3v6.5.tar.xz'
+  local dir='/usr/share/themes/'
+  local tmp
+
+  tmp="$(temp 'themes' "$(basename "$url")")"
+  download "$tmp" "$url"
+
+  doas mkdir -p "$dir"
+  doas tar -Jxf "$tmp" -C "$dir"
+}
+
 # zsh ===========================================================================================
 
 setup_zsh() {
@@ -88,6 +102,19 @@ setup_home() {
   mkdir -pm 700 "$HOME/.secrets"
 }
 
+# gtk ===========================================================================================
+
+setup_gtk() {
+  gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+  gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark'
+
+  download_config 'gtk-3.0/gtk.css' \
+    'https://codeberg.org/evergarden/adwaita/raw/themes/evergarden-fall-green.css'
+  download_config 'gtk-4.0/gtk.css' \
+    'https://codeberg.org/evergarden/adwaita/raw/themes/gtk4.css' \
+    'https://codeberg.org/evergarden/adwaita/raw/themes/evergarden-fall-green.css'
+}
+
 # config ========================================================================================
 
 install_config() {
@@ -99,13 +126,6 @@ install_config() {
     'https://codeberg.org/evergarden/foot/raw/themes/evergarden-fall-green.ini'
   download_config 'halloy/themes/evergarden-fall.toml' \
     'https://codeberg.org/evergarden/halloy/raw/themes/evergarden-fall.toml'
-
-  # TODO: adw-gtk3
-  download_config 'gtk-3.0/gtk.css' \
-    'https://codeberg.org/evergarden/adwaita/raw/themes/evergarden-fall-green.css'
-  download_config 'gtk-4.0/gtk.css' \
-    'https://codeberg.org/evergarden/adwaita/raw/themes/gtk4.css' \
-    'https://codeberg.org/evergarden/adwaita/raw/themes/evergarden-fall-green.css'
 }
 
 # main ==========================================================================================
@@ -121,9 +141,11 @@ main() {
   install_npm_packages "${NPM_PACKAGES[@]}"
 
   install_scripts
+  install_themes
 
   setup_zsh
   setup_home
+  setup_gtk
   install_config
 }
 

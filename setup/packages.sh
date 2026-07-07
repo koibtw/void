@@ -6,6 +6,7 @@ set -euo pipefail
 
 export PACKAGES=(
   # dependencies
+  xz                        # setup
   curl                      # setup
   dbus                      # desktop
   nodejs                    # npm packages
