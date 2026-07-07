@@ -8,5 +8,6 @@ alias grep='grep --color=auto'
 alias ip='ip -color=auto'
 
 alias ll='ls -l'
-alias la='ls -lA'
-alias lA='ls -la'
+alias ld='ls -d'
+alias la='ls -la'
+alias lA='ls -lA'
