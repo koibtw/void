@@ -2,12 +2,12 @@
 
 set -euo pipefail
 
-# helpers =======================================================================================
+# util ==========================================================================================
 
 SETUP="$(dirname "$0")"
 ROOT="$(readlink -f "$(basename "$SETUP")/..")"
-# shellcheck source=setup/helpers.sh
-source "$SETUP/helpers.sh"
+# shellcheck source=setup/util.sh
+source "$SETUP/util.sh"
 # shellcheck source=setup/packages.sh
 source "$SETUP/packages.sh"
 
@@ -37,6 +37,7 @@ setup_xbps() {
   done
 
   move_root "$tmp" "/etc/xbps.d/$file"
+  rm -f "$tmp"
 }
 
 # pipewire ======================================================================================
