@@ -46,6 +46,9 @@ export PACKAGES=(
   shellcheck
   xtools
 
+  # net
+  tailscale
+
   # fonts
   # TODO: maple mono nf
   noto-fonts-cjk-sans

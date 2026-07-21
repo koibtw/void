@@ -49,6 +49,12 @@ setup_pipewire() {
   done
 }
 
+# tailscale =====================================================================================
+
+setup_tailscale() {
+  doas tailscale set --operator=koi
+}
+
 # rust ==========================================================================================
 
 setup_rust() {
@@ -159,6 +165,7 @@ main() {
   [[ "$(command -v doas)" ]] || setup_doas
   setup_xbps
   setup_pipewire
+  setup_tailscale 
   setup_rust
 
   install_packages "${PACKAGES[@]}"
