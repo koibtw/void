@@ -118,7 +118,7 @@ setup_gtk() {
 
 # config ========================================================================================
 
-install_config() {
+setup_config() {
   find config -type f -printf "%P\0" | while IFS= read -r -d '' file; do
     link "$(p_config_src "$file")" "$(p_config_dst "$file")"
   done
@@ -129,9 +129,33 @@ install_config() {
     'https://codeberg.org/evergarden/halloy/raw/themes/evergarden-fall.toml'
 }
 
+# args ==========================================================================================
+
+args() {
+  local cmd="$1"
+
+  if [[ -z "$cmd" ]]; then
+    return
+  fi
+
+  for func in $(declare -F | cut -d' ' -f3); do
+    if [[ "$func" = "setup_$cmd" ]]; then
+      "$func"
+      exit 0
+    fi
+  done
+
+  if [[ -z "$found" ]]; then
+    echo "$cmd is not defined"
+    exit 1
+  fi
+}
+
 # main ==========================================================================================
 
 main() {
+  args "${1:-}"
+
   [[ "$(command -v doas)" ]] || setup_doas
   setup_xbps
   setup_pipewire
@@ -147,7 +171,7 @@ main() {
   setup_zsh
   setup_home
   setup_gtk
-  install_config
+  setup_config
 }
 
-main
+main "$@"
