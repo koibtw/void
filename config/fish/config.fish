@@ -1,9 +1,9 @@
+set -gx GPG_TTY (tty)
+
 if status is-interactive
   fish_config theme choose evergarden-fall
   fish_aliases
-
-  set -gx GPG_TTY (tty)
-  zoxide init fish | source
+  zoxide init fish --no-cmd | source
 end
 
 if status is-login
@@ -26,14 +26,14 @@ if status is-login
   set -gx XDG_TEMPLATES_DIR '/tmp/garbage'
 
   set -gx GRIM_DEFAULT_DIR "$XDG_PICTURES_DIR/screenshots"
-  test -d "$GRIM_DEFAULT_DIR" || mkdir -p "$GRIM_DEFAULT_DIR"
+  test -d "$GRIM_DEFAULT_DIR"
+  or mkdir -p "$GRIM_DEFAULT_DIR"
 
   set -gx CARGO_TARGET_DIR "$HOME/.cargo/target"
-  
   test -f "$HOME/.cargo/env.fish"
   and source "$HOME/.cargo/env.fish"
 
-  test -z "$DISLPAY"
-  and test "$XDG_VTNR" -eq 1
+  test -z "$DISPLAY"
+  and test "$XDG_VTNR" = 1
   and exec dbus-run-session mango
 end
