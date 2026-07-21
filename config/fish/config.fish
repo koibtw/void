@@ -1,5 +1,6 @@
 if status is-interactive
   fish_config theme choose evergarden-fall
+  fish_aliases
 
   set -gx GPG_TTY (tty)
   zoxide init fish | source
