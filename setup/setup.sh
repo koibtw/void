@@ -85,7 +85,15 @@ install_themes() {
   doas tar -Jxf "$tmp" -C "$dir"
 }
 
-# zsh ===========================================================================================
+# shell =========================================================================================
+
+setup_fish() {
+  install_packages "${FISH_PACKAGES[@]}"
+  doas chsh "$USER" -s /bin/fish
+
+  download_config 'fish/themes/evergarden-fall.theme' \
+    'https://codeberg.org/evergarden/fish/raw/themes/evergarden-fall.theme'
+}
 
 setup_zsh() {
   local tmp_rc
@@ -170,12 +178,13 @@ main() {
 
   install_packages "${PACKAGES[@]}"
   install_packages "${LSP_PACKAGES[@]}"
+  install_packages "${SHELL_PACKAGES[@]}"
   install_npm_packages "${NPM_PACKAGES[@]}"
 
   install_scripts
   install_themes
 
-  setup_zsh
+  setup_fish
   setup_home
   setup_gtk
   setup_config

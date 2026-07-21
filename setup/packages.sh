@@ -56,15 +56,19 @@ export PACKAGES=(
   noto-fonts-ttf
 )
 
-# zsh ===========================================================================================
+# shell =========================================================================================
 
-export ZSH_PACKAGES=(
+export SHELL_PACKAGES=(
   zoxide
+  eza
+  fd
+)
+
+export FISH_PACKAGES=(fish-shell)
+export ZSH_PACKAGES=(
   zsh-syntax-highlighting
   zsh-autosuggestions
   zsh
-  eza
-  fd
 )
 
 # lsp ===========================================================================================
@@ -81,4 +85,5 @@ export LSP_PACKAGES=(
 
 export NPM_PACKAGES=(
   @zed-industries/vscode-langservers-extracted
+  fish-lsp
 )
