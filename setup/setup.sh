@@ -169,10 +169,8 @@ args() {
     fi
   done
 
-  if [[ -z "$found" ]]; then
-    echo "$cmd is not defined"
-    exit 1
-  fi
+  echo "$cmd is not defined"
+  exit 1
 }
 
 # main ==========================================================================================
