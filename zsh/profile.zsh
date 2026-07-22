@@ -11,14 +11,14 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 
 export XDG_DESKTOP_DIR="$HOME/desk"
-export XDG_DOCUMENTS_DIR="$HOME/docs"
+export XDG_DOCUMENTS_DIR="$HOME/text"
 export XDG_DOWNLOAD_DIR="$HOME/down"
 export XDG_PICTURES_DIR="$HOME/pics"
 export XDG_PROJECTS_DIR="$HOME/dev"
 export XDG_VIDEOS_DIR="$HOME/vido"
-export XDG_MUSIC_DIR='/media/music'
-export XDG_PUBLICSHARE_DIR='/tmp/garbage'
-export XDG_TEMPLATES_DIR='/tmp/garbage'
+export XDG_MUSIC_DIR='/media/data/music'
+export XDG_PUBLICSHARE_DIR='/dev/null'
+export XDG_TEMPLATES_DIR='/dev/null'
 
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"

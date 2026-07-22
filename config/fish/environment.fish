@@ -7,14 +7,14 @@ set -gx XDG_DATA_HOME "$HOME/.local/share"
 set -gx XDG_STATE_HOME "$HOME/.local/state"
 
 set -gx XDG_DESKTOP_DIR "$HOME/desk"
-set -gx XDG_DOCUMENTS_DIR "$HOME/docs"
+set -gx XDG_DOCUMENTS_DIR "$HOME/text"
 set -gx XDG_DOWNLOAD_DIR "$HOME/down"
 set -gx XDG_PICTURES_DIR "$HOME/pics"
 set -gx XDG_PROJECTS_DIR "$HOME/dev"
 set -gx XDG_VIDEOS_DIR "$HOME/vido"
-set -gx XDG_MUSIC_DIR '/media/music'
-set -gx XDG_PUBLICSHARE_DIR '/tmp/garbage'
-set -gx XDG_TEMPLATES_DIR '/tmp/garbage'
+set -gx XDG_MUSIC_DIR '/media/data/music'
+set -gx XDG_PUBLICSHARE_DIR '/dev/null'
+set -gx XDG_TEMPLATES_DIR '/dev/null'
 
 set -gx GNUPGHOME "$XDG_DATA_HOME/gnupg"
 set -gx CUDA_CACHE_PATH "$XDG_CACHE_HOME/nv"
