@@ -1,0 +1,58 @@
+# $OpenBSD: sshd_config,v 1.105 2024/12/03 14:12:47 dtucker Exp $
+
+Include /etc/ssh/sshd_config.d/*.conf
+
+Port 22
+AddressFamily any
+ListenAddress 0.0.0.0
+ListenAddress ::
+
+#HostKey /etc/ssh/ssh_host_rsa_key
+#HostKey /etc/ssh/ssh_host_ecdsa_key
+#HostKey /etc/ssh/ssh_host_ed25519_key
+
+# Logging
+#SyslogFacility AUTH
+#LogLevel INFO
+
+PubkeyAuthentication yes
+KbdInteractiveAuthentication no
+PasswordAuthentication no
+HostbasedAuthentication no
+KerberosAuthentication no
+
+UsePAM yes
+
+PermitEmptyPasswords no
+PermitRootLogin no
+IgnoreUserKnownHosts no
+
+#LoginGraceTime 2m
+#StrictModes yes
+#MaxAuthTries 6
+#MaxSessions 10
+
+AuthorizedKeysFile /etc/ssh/authorized_keys.d/%u
+
+#AllowAgentForwarding yes
+#AllowTcpForwarding yes
+#GatewayPorts no
+#X11Forwarding no
+#X11DisplayOffset 10
+#X11UseLocalhost yes
+#PermitTTY yes
+PrintMotd no
+#PrintLastLog yes
+#TCPKeepAlive yes
+#PermitUserEnvironment no
+#Compression delayed
+#ClientAliveInterval 0
+#ClientAliveCountMax 3
+#UseDNS no
+#PidFile /run/sshd.pid
+#MaxStartups 10:30:100
+#PermitTunnel no
+#ChrootDirectory none
+#VersionAddendum none
+
+Subsystem	sftp /usr/libexec/sftp-server

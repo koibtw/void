@@ -150,7 +150,7 @@ setup_config() {
 # services ======================================================================================
 
 setup_services() {
-  enable_services chronyd tailscaled
+  enable_services sshd chronyd tailscaled
 }
 
 # args ==========================================================================================
