@@ -28,6 +28,9 @@ export NPM_CONFIG_INIT_MODULE="$XDG_CONFIG_HOME/npm/config/npm-init.js"
 export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
 export NPM_CONFIG_TMP="$XDG_RUNTIME_DIR/npm"
 
+export ZVM_PATH="$XDG_DATA_HOME/zvm"
+export PATH="$PATH:$XDG_DATA_HOME/zvm/bin"
+
 export GRIM_DEFAULT_DIR="$XDG_PICTURES_DIR/screenshots"
 [[ -d "$GRIM_DEFAULT_DIR" ]] || mkdir -p "$GRIM_DEFAULT_DIR"
 

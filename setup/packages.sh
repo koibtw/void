@@ -43,8 +43,9 @@ export PACKAGES=(
   mpv
 
   # dev
-  shfmt
+  zvm
   rustup
+  shfmt
   shellcheck
   xtools
 
