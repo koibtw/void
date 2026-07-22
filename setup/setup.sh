@@ -58,7 +58,6 @@ setup_tailscale() {
 # rust ==========================================================================================
 
 setup_rust() {
-  install_packages rustup
   rustup-init --no-modify-path -y \
     -c rust-analyzer
 }

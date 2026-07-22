@@ -44,6 +44,7 @@ export PACKAGES=(
 
   # dev
   shfmt
+  rustup
   shellcheck
   xtools
 
