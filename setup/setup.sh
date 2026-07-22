@@ -58,7 +58,8 @@ setup_tailscale() {
 # rust ==========================================================================================
 
 setup_rust() {
-  rustup-init --no-modify-path -y \
+  RUSTUP_HOME="$XDG_DATA_HOME/rustup" \
+    rustup-init --no-modify-path -y \
     -c rust-analyzer
 }
 

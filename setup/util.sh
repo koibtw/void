@@ -116,5 +116,6 @@ install_packages() {
 }
 
 install_npm_packages() {
-  doas npm i -g "$@"
+  NPM_CONFIG_TMP="$XDG_RUNTIME_DIR/npm" \
+    doas npm i -g "$@"
 }

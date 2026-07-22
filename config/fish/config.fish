@@ -25,13 +25,24 @@ if status is-login
   set -gx XDG_PUBLICSHARE_DIR '/tmp/garbage'
   set -gx XDG_TEMPLATES_DIR '/tmp/garbage'
 
+  set -gx GNUPGHOME "$XDG_DATA_HOME/gnupg"
+  set -gx CUDA_CACHE_PATH "$XDG_CACHE_HOME/nv"
+  set -gx INPUTRC "$XDG_CONFIG_HOME/readline/inputrc"
+
+  set -gx NPM_CONFIG_INIT_MODULE "$XDG_CONFIG_HOME/npm/config/npm-init.js"
+  set -gx NPM_CONFIG_CACHE "$XDG_CACHE_HOME/npm"
+  set -gx NPM_CONFIG_TMP "$XDG_RUNTIME_DIR/npm"
+
   set -gx GRIM_DEFAULT_DIR "$XDG_PICTURES_DIR/screenshots"
   test -d "$GRIM_DEFAULT_DIR"
   or mkdir -p "$GRIM_DEFAULT_DIR"
 
-  set -gx CARGO_TARGET_DIR "$HOME/.cargo/target"
-  test -f "$HOME/.cargo/env.fish"
-  and source "$HOME/.cargo/env.fish"
+  set -gx RUSTUP_HOME "$XDG_DATA_HOME/rustup"
+  set -gx CARGO_HOME "$XDG_DATA_HOME/cargo"
+  set -gx CARGO_TARGET_DIR "$XDG_CACHE_HOME/cargo"
+
+  test -f "$CARGO_HOME/env.fish"
+  and source "$CARGO_HOME/env.fish"
 
   test -z "$DISPLAY"
   and test "$XDG_VTNR" = 1
