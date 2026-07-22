@@ -9,6 +9,16 @@ p_zsh_src() {
   echo "$ROOT/zsh/$target.zsh"
 }
 
+p_etc_src() {
+  local target="$1"
+  echo "$ROOT/etc/$target"
+}
+
+p_etc_dst() {
+  local target="$1"
+  echo "/etc/$target"
+}
+
 p_config_src() {
   local target="$1"
   echo "$ROOT/config/$target"

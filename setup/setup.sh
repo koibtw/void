@@ -17,9 +17,6 @@ setup_doas() {
   sudo xbps-install -y opendoas
   echo 'permit persist :wheel' |
     sudo tee /etc/doas.conf >/dev/null
-  echo 'ignorepkg=sudo' |
-    sudo tee -a '/etc/xbps.d/10-ignore.conf' >/dev/null
-  doas true
   doas xbps-remove -Ry sudo
 }
 
@@ -38,6 +35,14 @@ setup_xbps() {
 
   move_root "$tmp" "/etc/xbps.d/$file"
   rm -f "$tmp"
+}
+
+# etc ===========================================================================================
+
+setup_etc() {
+  find etc -type f -printf "%P\0" | while IFS= read -r -d '' file; do
+    link_root "$(p_etc_src "$file")" "$(p_etc_dst "$file")"
+  done
 }
 
 # pipewire ======================================================================================
@@ -181,6 +186,7 @@ main() {
   install_packages "${PACKAGES[@]}"
   setup_services
 
+  setup_etc
   setup_pipewire
   setup_tailscale 
   setup_rust
