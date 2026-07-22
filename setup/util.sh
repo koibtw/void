@@ -86,6 +86,7 @@ link_root() {
 download() {
   local target="$1"
   local url="$2"
+  local add
 
   curl -fsSL "$url" -o "$target"
 
@@ -118,4 +119,14 @@ install_packages() {
 install_npm_packages() {
   NPM_CONFIG_TMP="$XDG_RUNTIME_DIR/npm" \
     doas npm i -g "$@"
+}
+
+# services ======================================================================================
+
+enable_services() {
+  local name
+  for name in "$@"; do
+    doas ln -sfn "/etc/sv/$name" "/etc/runit/runsvdir/default/$name"
+    doas sv up "$name"
+  done
 }

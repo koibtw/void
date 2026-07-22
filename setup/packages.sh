@@ -50,6 +50,11 @@ export PACKAGES=(
 
   # net
   tailscale
+  chrony
+
+  # audio
+  pipewire
+  wireplumber
 
   # fonts
   # TODO: maple mono nf

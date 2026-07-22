@@ -43,7 +43,6 @@ setup_xbps() {
 # pipewire ======================================================================================
 
 setup_pipewire() {
-  install_packages pipewire wireplumber
   for file in 'wireplumber/10-wireplumber.conf' 'pipewire/20-pipewire-pulse.conf'; do
     link_root "/usr/share/examples/$file" "/etc/pipewire/pipewire.conf.d/$(basename "$file")"
   done
@@ -143,6 +142,12 @@ setup_config() {
     'https://codeberg.org/evergarden/halloy/raw/themes/evergarden-fall.toml'
 }
 
+# services ======================================================================================
+
+setup_services() {
+  enable_services chronyd tailscaled
+}
+
 # args ==========================================================================================
 
 args() {
@@ -172,11 +177,14 @@ main() {
 
   [[ "$(command -v doas)" ]] || setup_doas
   setup_xbps
+
+  install_packages "${PACKAGES[@]}"
+  setup_services
+
   setup_pipewire
   setup_tailscale 
   setup_rust
 
-  install_packages "${PACKAGES[@]}"
   install_packages "${LSP_PACKAGES[@]}"
   install_packages "${SHELL_PACKAGES[@]}"
   install_npm_packages "${NPM_PACKAGES[@]}"
