@@ -40,6 +40,7 @@ export PACKAGES=(
   # video
   v4l2loopback
   obs
+  mpv
 
   # dev
   shfmt
