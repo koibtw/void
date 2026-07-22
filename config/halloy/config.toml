@@ -17,7 +17,7 @@ monitor = [ "robinwobin" ]
 channels = [ "#neovim", "#voidlinux", "#xbps" ]
 [servers.liberachat.sasl.plain]
 username = "junekot"
-password_command = "cat ~/.secrets/irc-password"
+password_command = "cat ~/.vault/irc-password"
 disconnect_on_failure = true
 [servers.liberachat.metadata]
 avatar = "https://koi.rip/img/silly/pfp.png"
@@ -30,7 +30,7 @@ status = "meowing :3"
 [servers.oftc]
 server = "irc.oftc.net"
 nickname = "june"
-nick_password_command = "cat ~/.secrets/irc-password"
+nick_password_command = "cat ~/.vault/irc-password"
 channels = [ "#alpine-linux", "#alpine-devel", "#alpine-offtopic" ]
 [servers.oftc.metadata]
 avatar = "https://koi.rip/img/silly/pfp.png"
@@ -45,5 +45,5 @@ server = "irc.runxiyu.org"
 nickname = "june"
 channels = [ "#chat" ]
 [servers.rx.sasl.external]
-cert = "~/.secrets/irc-rx.pem"
+cert = "~/.vault/irc-rx.pem"
 disconnect_on_failure = true

@@ -114,7 +114,7 @@ setup_zsh() {
 
 setup_home() {
   # shellcheck disable=SC2174
-  mkdir -pm 700 "$HOME/.secrets"
+  mkdir -pm 700 "$HOME/.vault"
 }
 
 # gtk ===========================================================================================
