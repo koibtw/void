@@ -45,6 +45,9 @@ export PACKAGES=(
   # dev
   zvm
   rustup
+  go
+  gopls
+  golangci-lint
   shfmt
   shellcheck
   xtools
