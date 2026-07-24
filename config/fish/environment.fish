@@ -26,6 +26,8 @@ set -gx NPM_CONFIG_INIT_MODULE "$XDG_CONFIG_HOME/npm/config/npm-init.js"
 set -gx NPM_CONFIG_CACHE "$XDG_CACHE_HOME/npm"
 set -gx NPM_CONFIG_TMP "$XDG_RUNTIME_DIR/npm"
 
+set -gx GOPATH "$XDG_DATA_HOME/go"
+
 set -gx ZVM_PATH "$XDG_DATA_HOME/zvm"
 fish_add_path -a "$XDG_DATA_HOME/zvm/bin"
 
