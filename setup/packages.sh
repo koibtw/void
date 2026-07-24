@@ -53,6 +53,7 @@ export PACKAGES=(
   xtools
 
   # net
+  bind-utils
   tailscale
   chrony
 
