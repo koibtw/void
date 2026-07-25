@@ -51,6 +51,7 @@ export PACKAGES=(
   shfmt
   shellcheck
   xtools
+  podman
 
   # net
   bind-utils
