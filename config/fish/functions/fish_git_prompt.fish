@@ -19,6 +19,9 @@ function fish_git_prompt
   test -n "$(command git diff --name-status --cached 2>/dev/null)"
   and set -l sign '@'
 
-  printf '%b %s %b %b%s %b%s%b' \
-    '\e[90m(\e[34m' "$rev" '\e[90m)\e[0m' '\e[33m' "$sign" '\e[35m' "$branch" '\e[0m'
+  set -l res (set_color $fish_color_normal)
+  set -l brb (set_color $fish_color_autosuggestion)
+  set -l dir (set_color $fish_color_dirty)
+  printf '%b %s %s %s %b%s%s' \
+    "$brb(\e[34m" "$rev" "$brb)" "$dir$sign" '\e[35m' "$branch" "$res"
 end
