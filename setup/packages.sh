@@ -39,6 +39,7 @@ export PACKAGES=(
 
   # video
   v4l2loopback
+  ffmpeg
   obs
   mpv
 
@@ -59,6 +60,7 @@ export PACKAGES=(
   chrony
 
   # audio
+  flac
   pipewire
   wireplumber
 
