@@ -1,6 +1,17 @@
 #!/usr/bin/env bash
-
 set -euo pipefail
+
+# Copyright 2026 june
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file
+# except in compliance with the License. You may obtain a copy of the License at
+#
+#     https://git.koi.rip/koi/void/src/LICENSE
+#
+# Unless required by applicable law or agreed to in writing, software distributed under the
+# License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+# either express or implied. See the License for the specific language governing permissions and
+# limitations under the License.
 
 EDITOR="${EDITOR:-vi}"
 
@@ -12,20 +23,20 @@ usage() {
 run() {
   local file="$1"
 
-  tmp="$(mktemp -p /tmp "doasvi.$(basename -- "$file").XXXXX")"
+  tmp="$(mktemp -- "doasvi.$(basename -- "$file").XXXXXX")"
   trap 'rm -f -- "$tmp"' RETURN
 
-  if [[ -e $file ]]; then
-    doas cp --no-preserve=mode,ownership -- "$file" "$tmp"
+  if [[ -e "$file" ]]; then
+    doas cat -- "$file" | tee -- "$tmp" >/dev/null
   fi
 
   "$EDITOR" "$tmp" || return "$?"
 
-  if [[ -e $file ]] && cmp -s -- "$tmp" "$file"; then
-    continue
+  if [[ -e "$file" ]] && cmp -s -- "$tmp" "$file"; then
+    return 0
   fi
     
-  doas cp --no-preserve=mode,ownership -- "$tmp" "$file"
+  cat -- "$tmp" | doas tee -- "$file" >/dev/null
 }
 
 main() {
