@@ -53,6 +53,7 @@ export PACKAGES=(
   shellcheck
   xtools
   podman
+  nix
 
   # net
   bind-utils
