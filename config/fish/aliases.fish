@@ -15,3 +15,5 @@ alias ll 'ls -l'
 alias ld 'ls -d'
 alias la 'ls -la'
 alias lA 'ls -lA'
+
+alias xlocate 'command xlocate -S && command xlocate'
