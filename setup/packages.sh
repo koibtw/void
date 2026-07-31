@@ -44,6 +44,7 @@ export PACKAGES=(
   mpv
 
   # dev
+  pkg-config
   zvm
   rustup
   go
