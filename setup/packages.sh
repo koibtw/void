@@ -39,6 +39,7 @@ export PACKAGES=(
 
   # video
   v4l2loopback
+  mkvtoolnix
   ffmpeg
   obs
   mpv
