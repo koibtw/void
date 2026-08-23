@@ -60,6 +60,7 @@ export PACKAGES=(
   bind-utils
   tailscale
   chrony
+  rsync
 
   # audio
   flac
