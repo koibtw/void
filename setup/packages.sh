@@ -53,6 +53,7 @@ export PACKAGES=(
   golangci-lint
   shfmt
   shellcheck
+  StyLua
   xtools
   podman
   nix
