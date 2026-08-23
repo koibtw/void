@@ -23,7 +23,7 @@ diff-editor = ":builtin"
 
 [aliases]
 init = [ "git", "init", "--colocate" ]
-clone = [ "git", "clone", "--colocate", "--fetch-tags=none", "--branch" ]
+clone = [ "git", "clone", "--colocate", "--tag=none", "--branch" ]
 set = [ "bookmark", "move", "--to=first_parent(@)" ]
 boo = [ "metaedit", "--author=robin <comfysagedev@gmail.com>" ]
 
