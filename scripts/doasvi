@@ -23,7 +23,7 @@ usage() {
 run() {
   local file="$1"
 
-  tmp="$(mktemp -- "doasvi.$(basename -- "$file").XXXXXX")"
+  tmp="$(mktemp -p /tmp -- "doasvi.$(basename -- "$file").XXXXXX")"
   trap 'rm -f -- "$tmp"' RETURN
 
   if [[ -e "$file" ]]; then
