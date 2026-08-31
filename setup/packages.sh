@@ -46,6 +46,8 @@ export PACKAGES=(
 
   # dev
   pkg-config
+  clang
+  lldb
   zvm
   rustup
   go
