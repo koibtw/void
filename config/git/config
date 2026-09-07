@@ -20,7 +20,7 @@
 	compression = 9
 	whitespace = error
 	preloadindex = true
-  ; pager = "diff-so-fancy | less -RFX"
+  ; pager = "diff-so-fancy | less --tilde -FRc"
 
 [pull]
 	rebase = true

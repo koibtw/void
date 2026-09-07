@@ -15,7 +15,7 @@ key = "5A530832DA9120B0CA57DDB67CBDB58ECF1D3478"
 default-command = "status"
 diff-formatter = ":git"
 diff-editor = ":builtin"
-# pager = [ "sh", "-c", "diff-so-fancy | less -RFX" ]
+# pager = [ "sh", "-c", "diff-so-fancy | less --tilde -FRc" ]
 
 [colors]
 "diff added token" = { underline = false }
