@@ -35,6 +35,7 @@ export PACKAGES=(
   # terminal
   wiremix
   neovim
+  helix
   btop
 
   # video

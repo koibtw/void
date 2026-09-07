@@ -89,6 +89,13 @@ install_themes() {
   doas tar -Jxf "$tmp" -C "$dir"
 }
 
+# helix =========================================================================================
+
+setup_helix() {
+  download_config 'helix/themes/evergarden_fall_green.toml' \
+    'https://codeberg.org/evergarden/helix/raw/themes/evergarden_fall_green.toml'
+}
+
 # shell =========================================================================================
 
 setup_fish() {
@@ -197,6 +204,7 @@ main() {
   install_themes
 
   setup_fish
+  setup_helix
   setup_home
   setup_gtk
   setup_config

@@ -1,0 +1,8 @@
+[[language]]
+name = "just"
+indent = { tab-width = 2, unit = "  " }
+
+[[language]]
+name = "lua"
+formatter = { command = "stylua", args = ["--search-parent-directories", "-"] }
+auto-format = true
