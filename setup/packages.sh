@@ -37,6 +37,7 @@ export PACKAGES=(
   neovim
   helix
   btop
+  aerc
 
   # video
   v4l2loopback

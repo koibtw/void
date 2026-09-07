@@ -96,6 +96,13 @@ setup_helix() {
     'https://codeberg.org/evergarden/helix/raw/themes/evergarden_fall_green.toml'
 }
 
+# aerc ==========================================================================================
+
+setup_aerc() {
+  download_config 'aerc/stylesets/evergarden-fall' \
+    'https://codeberg.org/evergarden/aerc/raw/themes/evergarden-fall'
+}
+
 # shell =========================================================================================
 
 setup_fish() {
@@ -193,7 +200,7 @@ main() {
 
   setup_etc
   setup_pipewire
-  setup_tailscale 
+  setup_tailscale
   setup_rust
 
   install_packages "${LSP_PACKAGES[@]}"
@@ -205,6 +212,7 @@ main() {
 
   setup_fish
   setup_helix
+  setup_aerc
   setup_home
   setup_gtk
   setup_config
