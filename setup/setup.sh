@@ -103,6 +103,13 @@ setup_aerc() {
     'https://codeberg.org/evergarden/aerc/raw/themes/evergarden-fall'
 }
 
+# eza ===========================================================================================
+
+setup_eza() {
+  download_config 'eza/theme.yml' \
+    'https://codeberg.org/evergarden/eza/raw/themes/evergarden-fall-green.yml'
+}
+
 # shell =========================================================================================
 
 setup_fish() {
@@ -213,6 +220,7 @@ main() {
   setup_fish
   setup_helix
   setup_aerc
+  setup_eza
   setup_home
   setup_gtk
   setup_config
