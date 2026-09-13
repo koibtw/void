@@ -65,6 +65,7 @@ export PACKAGES=(
   # net
   bind-utils
   tailscale
+  yt-dlp
   chrony
   rsync
 
