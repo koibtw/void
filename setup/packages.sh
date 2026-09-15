@@ -28,6 +28,7 @@ export PACKAGES=(
   jujutsu
   gnupg
   unzip
+  zip
   just
   git
   jq
